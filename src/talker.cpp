@@ -1,7 +1,7 @@
 /**
  *  @file      talker.cpp
  *  @brief     Node implementation for the publisher
- *  @author    Lamar Simpson  (https://github.com/ltsimps/beginner_tutorials) 
+ *  @author    Lamar Simpson  (https://github.com/ltsimps/metis_ros) 
  *  MIT License
  *  Copyright 2017 
  */
@@ -11,7 +11,7 @@
 #include <string>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "beginner_tutorials/strings.h"
+#include "metis_ros/strings.h"
 #include "tf/transform_broadcaster.h"
 
 
@@ -21,8 +21,8 @@ struct messages {
 }message;
 
 
-bool change_output(beginner_tutorials::stringsRequest   &req,
-                    beginner_tutorials::stringsResponse  &resp) {
+bool change_output(metis_ros::stringsRequest   &req,
+                    metis_ros::stringsResponse  &resp) {
   ROS_WARN_STREAM("Now changing output to " << req.input);
 
   if (req.input =="") {

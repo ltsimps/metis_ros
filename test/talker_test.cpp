@@ -4,7 +4,7 @@
 #include <tf/transform_listener.h>
 #include <gtest/gtest.h>
 #include <ros/service_client.h>
-#include "beginner_tutorials/strings.h"
+#include "metis_ros/strings.h"
 
 
 
@@ -16,7 +16,7 @@ TEST(TalkeSuite, existence_Test) {
 
   
   //call service and check for existence
-  client = nh.serviceClient < beginner_tutorials::strings > ("change_output");
+  client = nh.serviceClient < metis_ros::strings > ("change_output");
   bool exists(client.waitForExistence(ros::Duration(20)));
   EXPECT_TRUE(exists);
 

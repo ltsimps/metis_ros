@@ -1,4 +1,4 @@
 <launch>
-  <node pkg="beginner_tutorials" name="talker" type="talker" />
-  <test pkg="beginner_tutorials" test-name="talker_test" type="talker_test" />
+  <node pkg="metis_ros" name="talker" type="talker" />
+  <test pkg="metis_ros" test-name="talker_test" type="talker_test" />
 </launch>
