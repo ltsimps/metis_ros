@@ -37,7 +37,7 @@ add_dependencies(listener metis_ros_generate_messages_cpp)
 
 
 
-install(PROGRAMS
+catkin_install_python(PROGRAMS
 scripts/voice_ros.py
 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
