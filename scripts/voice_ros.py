@@ -56,7 +56,8 @@ class Speech_Recog(object):
       #Printing the detected text
       print "Detected Text=>    ",text
       hello_str = "hello world " 
-      self.pub.publish(hello_str)
+      #self.pub.publish(hello_str)
+      self.pub.publish(text)
       '''   
       pub = rospy.Publisher('voice_chatter', String, queue_size=10)
       rospy.init_node('voice', anonymous=True)
