@@ -36,6 +36,13 @@ target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener metis_ros_generate_messages_cpp)
 
 
+
+install(PROGRAMS
+scripts/voice_ros.py
+DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+
+
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
   

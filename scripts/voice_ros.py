@@ -83,28 +83,36 @@ class Speech_Recog(object):
       self.pipeline.set_state(gst.STATE_PAUSED)
 
   def talker():
+      app_object = Speech_Recog()
+      #Assign keyboard interrupt handler
+      #signal.signal(signal.SIGINT, signal_handle)
       pub = rospy.Publisher('voice_chatter', String, queue_size=10)
       rospy.init_node('voice', anonymous=True)
       rate = rospy.Rate(1)
-      while not rospy.is_shutdown():
+      #while not rospy.is_shutdown():
+      while true:
         hello_str = "hello world %s" % rospy.get_time()
-        rospy.logininfo(hello_str)
+        #rospy.logininfo(hello_str)
         pub.publish(hello_str)
-        rate.sleep()
+        #rate.sleep()
+        #while True:
+
+        #Calling Speech recognition routine
+        #app_object.start_recognition()
 
     
-talker()
 if __name__ == "__main__":
 
   #Creating an object of Speech_Recog() class
-  app_object = Speech_Recog()
+  #app_object = Speech_Recog()
 
 
   #Assign keyboard interrupt handler
-  signal.signal(signal.SIGINT, signal_handle)
-
+  #signal.signal(signal.SIGINT, signal_handle)
   
-  while True:
+  talker() 
+  
+  #while True:
 
     #Calling Speech recognition routine
-    app_object.start_recognition()
+    #app_object.start_recognition()
