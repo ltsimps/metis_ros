@@ -22,10 +22,12 @@ def signal_handle(signal, frame):
 
 #Implementation of Speech recognition class
 class Speech_Recog(object):
-
+  pub = " "
   #Initializing gstreamer pipeline and pocket sphinx element
   def __init__(self):
     self.init_gst()
+    self.pub = rospy.Publisher('voice_chatter', String, queue_size=10)
+    rospy.init_node('voice', anonymous=True)
 
   #This function will initialize gstreamer pipeline
   def init_gst(self):
@@ -53,6 +55,8 @@ class Speech_Recog(object):
   def asr_result(self, asr, text, uttid):
       #Printing the detected text
       print "Detected Text=>    ",text
+      hello_str = "hello world " 
+      self.pub.publish(hello_str)
       '''   
       pub = rospy.Publisher('voice_chatter', String, queue_size=10)
       rospy.init_node('voice', anonymous=True)
@@ -70,7 +74,7 @@ class Speech_Recog(object):
       vader = self.pipeline.get_by_name('vad')
       vader.set_property('silent', False)
       #Waiting for a key press to start recognition
-      raw_input("Press any key to start recognition:>")
+      #raw_input("Press any key to start recognition:>")
       #Start playing the pipeline
       self.pipeline.set_state(gst.STATE_PLAYING)
 
@@ -86,19 +90,20 @@ class Speech_Recog(object):
       #app_object = Speech_Recog()
       #Assign keyboard interrupt handler
       #signal.signal(signal.SIGINT, signal_handle)
-      pub = rospy.Publisher('voice_chatter', String, queue_size=10)
-      rospy.init_node('voice', anonymous=True)
+      #pub = rospy.Publisher('voice_chatter', String, queue_size=10)
+      #rospy.init_node('voice', anonymous=True)
       rate = rospy.Rate(1)
       #while not rospy.is_shutdown():
-      while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
+      #while not rospy.is_shutdown():
+      #hello_str = "hello world " 
         #rospy.logininfo(hello_str)
-        pub.publish(hello_str)
+      print("in while loop")
+      #pub.publish(hello_str)
         #rate.sleep()
         #while True:
         #rospy.spin()
         #Calling Speech recognition routine
-        #app_object.start_recognition()
+      self.start_recognition()
 
     
 if __name__ == "__main__":
@@ -109,6 +114,7 @@ if __name__ == "__main__":
   #Assign keyboard interrupt handler
   #signal.signal(signal.SIGINT, signal_handle)
   
+  print("in while loop")
   app_object.talk() 
   
   #while True:
