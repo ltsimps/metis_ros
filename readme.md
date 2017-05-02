@@ -13,7 +13,7 @@ Initial Midterm Commit
 ## Description of Project
 Metis:
 
-Metis is a robot that shows the emotional content of it's surroundings. This midterm project deals with the perception by analyzing  Sentiment. This program reads input from the user or from files and denotes whether it is positive or negative
+Metis is a robot that shows the emotional content of it's surroundings. This project deals with the perception by analyzing Sentiment. The plan is to no only have this run in gazebo, but also be run on an arduino board.This program reads input from the user or from files and denotes whether it is positive or negative. The program also listens real time for voice input and gives back the sentiment analysis. 
 
 
 ## Demo
