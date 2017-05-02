@@ -2,7 +2,7 @@
 <package>
   <name>metis_ros</name>
   <version>0.0.0</version>
-  <description>Beginner_tutorial</description>
+  <description>metis_ros</description>
 
   <maintainer email="ltsimpso@me.com">Lamar</maintainer>
   <license>MIT</license>

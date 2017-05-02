@@ -16,12 +16,19 @@
    <!-- Thise node recieves input messages and outputs them to the screen -->
     <node
         pkg           = "metis_ros"
+        type          = "voice_ros.py"
+        name          = "voice"
+        output        = "screen"
+        launch-prefix = "xterm -e"
+    />
+
+    <node
+        pkg           = "metis_ros"
         type          = "listener"
         name          = "listener"
         output        = "screen"
         launch-prefix = "xterm -e"
     />
-
 
     <node 
       pkg="rosbag" 

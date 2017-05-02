@@ -5,6 +5,8 @@
 import gobject
 import sys
 import pygst
+import rospy
+from std_msgs.msg import String
 pygst.require('0.10')
 gobject.threads_init()
 import gst
@@ -47,10 +49,21 @@ class Speech_Recog(object):
           self.pipeline.set_state(gst.STATE_PAUSED)
 
       #Definition of asr_result
+      #TODO:Modify to make it a publisher
   def asr_result(self, asr, text, uttid):
       #Printing the detected text
       print "Detected Text=>    ",text
-
+      '''   
+      pub = rospy.Publisher('voice_chatter', String, queue_size=10)
+      rospy.init_node('voice', anonymous=True)
+      rate = rospy.Rate(1)
+      while not rospy.is_shutdown():
+        hello_str = "hello world %s" % rospy.get_time()
+        rospy.logininfo(hello_str)
+        pub.publish(hello_str)
+        rate.sleep()
+      '''
+ 
     #This function will start/stop Speech recognition operation
   def start_recognition(self):
       #VADER - Voice Activity DEtectoR, which helps when the speech start and when its ends. Creating VADER object and set the property silent to False, so no speech will detected until key press
@@ -69,7 +82,18 @@ class Speech_Recog(object):
       #Pausing GStreamer pipeline
       self.pipeline.set_state(gst.STATE_PAUSED)
 
+  def talker():
+      pub = rospy.Publisher('voice_chatter', String, queue_size=10)
+      rospy.init_node('voice', anonymous=True)
+      rate = rospy.Rate(1)
+      while not rospy.is_shutdown():
+        hello_str = "hello world %s" % rospy.get_time()
+        rospy.logininfo(hello_str)
+        pub.publish(hello_str)
+        rate.sleep()
 
+    
+talker()
 if __name__ == "__main__":
 
   #Creating an object of Speech_Recog() class
@@ -79,6 +103,7 @@ if __name__ == "__main__":
   #Assign keyboard interrupt handler
   signal.signal(signal.SIGINT, signal_handle)
 
+  
   while True:
 
     #Calling Speech recognition routine
