@@ -58,11 +58,17 @@ void Sentiment::loadWordlist()  {
      * @return std::string.
     */
 std::string Sentiment::analysis(std::map<std::string, int> histogram) {
-     for ( const auto & p : histogram ) {
+     /*for ( const auto & p : histogram ) {
        std::cout << "Word '" << p.first << "occurs " << p.second << " times.\n";
-     }
+     }*/
 
 
         return " ";
-      }
+}
 
+
+int main(){
+
+return 0;
+
+}

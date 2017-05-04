@@ -23,26 +23,27 @@ using std::string;
  */
 
 void PositiveSentiment::loadWordlist()  {
-    std::ifstream inputFile{"../positive_words.txt"};
+    //std::ifstream inputFile{"../positive_words.txt"};
 
     std::set<string> wordlist;
 
 
     // test file open
-    if (inputFile) {
+    /*if (inputFile) {
         string value;
 
         // read the elements in the file into a vector
         while ( inputFile >> value ) {
             wordlist.insert(value);
         }
-    }
+    }*/
+
     // close the file
    /* for ( auto token : wordlist ) {
       std::cout << token << std::endl;
     }
    */
-    setWordlist(wordlist);
+    //setWordlist(wordlist);
 }
 
 
@@ -55,7 +56,7 @@ void PositiveSentiment::loadWordlist()  {
 
 std::string PositiveSentiment::analysis(std::map<string, int> histogram) {
     int score = 1;
-
+/*
      for (const auto & p : histogram) {
          if ( wordlist.find(p.first) != wordlist.end() ) {
            score +=p.second;
@@ -63,6 +64,16 @@ std::string PositiveSentiment::analysis(std::map<string, int> histogram) {
      }
 
     setEmotionScore(score);
-
+ */
   return " ";
+}
+
+
+
+int main(){
+
+
+
+return 0;
+
 }

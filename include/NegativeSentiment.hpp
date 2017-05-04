@@ -21,19 +21,18 @@ using std::cin;
 using std::string;
 
 
-class NegativeSentiment:public Sentiment {
+class NegativeSentiment:Sentiment {
  public:
  /**
   * @brief analysis for NegativeSentiment calculates the negative score for input.
   * @return std::string.
  */
-std::string analysis(std::map<std::string, int> histogram) override;
-
+virtual std::string analysis(std::map<std::string, int> histogram);
 
  /**
   * @brief loadwordlist for the NegativeSentiment class loads a negative wordlist.
  */
-void loadWordlist() override;
+void loadWordlist();
 
  private:
 };

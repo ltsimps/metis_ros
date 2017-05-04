@@ -12,7 +12,7 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
-#include<fstream>
+//#include<fstream>
 #include <sstream>
 
 
@@ -42,13 +42,14 @@ this->input = input;
   * @return string
  */
 std::string Parser::stringConversion(std::vector<std::string> input) {
-std::ostringstream oss;
+//std::ostringstream oss;
 
 if(!input.empty()) {
-std::copy(input.begin(), input.end(),
-std::ostream_iterator<string>(oss, " "));
+//std::copy(input.begin(), input.end(),
+//std::ostream_iterator<string>(oss, " "));
 }
-  return oss.str();
+  //return oss.str();
+  return "";
 }
 
 
@@ -90,12 +91,12 @@ std::vector<std::string> Parser::getInput() {
 std::vector<std::string> Parser::getFileInput(std::string in ) {
   // std::ifstream inputFile{"../Positive_Examples/Positive_Example_1.txt"};
 
-  std::ifstream inputFile{in};
+  //std::ifstream inputFile{in};
 
 
   std::vector<string> file;
 
-
+/*
   // test file open
   if (inputFile) {
       string value;
@@ -107,6 +108,8 @@ std::vector<std::string> Parser::getFileInput(std::string in ) {
       std::cin.clear();
       // input>>std:flush;
   }
+
+ */
   return file;
 }
 
@@ -120,7 +123,7 @@ std::vector<std::string> Parser::getFileInput(std::string in ) {
 std::map<string, int> Parser::generateHistogram(std::vector<string> input) {
 std::map<string, int> histogram;
 
-  for (const string & s : input) { ++histogram[s]; }
+  //for (const string & s : input) { ++histogram[s]; }
 
 /*
   for (const auto & p : histogram)
@@ -132,4 +135,7 @@ std::map<string, int> histogram;
   return histogram;
 }
 
+int main (){
 
+ return 0;
+}

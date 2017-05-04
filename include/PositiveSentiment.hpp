@@ -9,21 +9,21 @@
 #pragma once
 #include <map>
 #include <string>
-#include <Sentiment.hpp>
+//#include <Sentiment.hpp>
 
 
-class PositiveSentiment:public Sentiment {
+class PositiveSentiment {
  public:
   /**
     * @brief analysis for NegativeSentiment calculates the negative score for input.
     * @return std::string.
    */
-  std::string analysis(std::map<std::string, int> histogram) override;
+  std::string analysis(std::map<std::string, int> histogram);
 
   /**
     * @brief loadwordlist for the NegativeSentiment class loads a negative wordlist.
    */
-  void loadWordlist() override;
+  void loadWordlist();
 
  private:
 };

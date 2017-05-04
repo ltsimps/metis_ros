@@ -21,12 +21,12 @@ class Sentiment{
    * @brief analysis  is a virtual function meant to be overriden by derived classes for the base classes analysis needs.
    * @return std::string.
    */
-  virtual std::string analysis(std::map<std::string, int> histogram);
+  virtual std::string analysis(std::map<std::string, int> histogram) = 0;
 
   /**
     * @brief loadwordlist for the Sentiment class is a virtual function meant to be overriden by derived classes to define functionality for sentiment .
    */
-  virtual void loadWordlist();
+   void loadWordlist();
 
   /**
     * @brief setEmotionScore assigns a value to the emotionscore class member variable
@@ -39,7 +39,7 @@ class Sentiment{
     * @brief setWordlist assigns a value to the wordlist class member set
     * @param std::set<string> wordlist
   */
-  void setWordlist(std::set<std::string> wordlist);
+   void setWordlist(std::set<std::string> wordlist);
 
   /**
     * @brief getEmotionScore returns the value of the emotionscore class member variable

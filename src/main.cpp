@@ -54,6 +54,7 @@ return response;
  * @brief  getUserInput() obtains user input and processes it.
  */
 void getUserInput() {
+  /*
     std::cout << " " << std::endl;
     Parser  p;
     PositiveSentiment ps;
@@ -91,6 +92,7 @@ void getUserInput() {
      std::cout << "\033[1;31mNEGATIVE\033[0m\n" << std::endl;
   else
      std::cout << "\033[1;36mNEUTRAL\033[0m\n" << std::endl;
+*/
 }
 
 /**
@@ -98,6 +100,7 @@ void getUserInput() {
  */
 
 void getFileInput() {
+   /*
     std::cout << " " << std::endl;
     Parser  p;
     PositiveSentiment ps;
@@ -151,13 +154,14 @@ void getFileInput() {
     std::cout << "\033[1;31mNEGATIVE\033[0m\n" << std::endl;
   else
     std::cout << "\033[1;36mNEUTRAL\033[0m\n" << std::endl;
+*/
 }
 
 
 
 
 int main() {
-  string response =  "Y";
+ /* string response =  "Y";
 
 
   while (response == "Y" || response == "y") {
@@ -177,6 +181,6 @@ int main() {
 
   std::cout << "Enter y or Y if you wish to continue " << std::endl;
   std::cin >> response;
-}
+}*/
   return 0;
 }

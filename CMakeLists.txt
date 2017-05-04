@@ -23,18 +23,18 @@ catkin_package()
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS})
 
+
+
+
 add_executable(talker src/talker.cpp)
 target_link_libraries(talker ${catkin_LIBRARIES})
 add_dependencies(talker metis_ros_generate_messages_cpp)
 
 
-add_executable(metis src/main.cpp)
-target_link_libraries(metis ${catkin_LIBRARIES})
-add_dependencies( metis  metis_ros_generate_messages_cpp)
-
 add_executable(Sentiment src/Sentiment.cpp)
 target_link_libraries(Sentiment ${catkin_LIBRARIES})
 add_dependencies( Sentiment  metis_ros_generate_messages_cpp)
+
 
 
 add_executable(PositiveSentiment src/PositiveSentiment.cpp)
@@ -50,6 +50,7 @@ add_dependencies( NegativeSentiment  metis_ros_generate_messages_cpp)
 add_executable(Parser src/Parser.cpp)
 target_link_libraries(Parser ${catkin_LIBRARIES})
 add_dependencies( Parser  metis_ros_generate_messages_cpp)
+
 #add_executable( main.cpp Parser.cpp 
 # Sentiment.cpp
 # PositiveSentiment.cpp

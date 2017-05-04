@@ -14,27 +14,27 @@
   */
 
 void NegativeSentiment::loadWordlist()  {
-    std::ifstream inputFile{"../negative_words.txt"};
+    //std::ifstream inputFile{"../negative_words.txt"};
 
-    std::set<string> wordlist;
+    //std::set<string> wordlist;
 
 
     // test file open
-    if (inputFile) {
+    /*if (inputFile) {
         string value;
 
         // read the elements in the file into a vector
         while ( inputFile >> value ) {
             wordlist.insert(value);
         }
-    }
+    }*/
     // close the file
     /* for ( auto token : wordlist ) {
       std::cout << token << std::endl;
     }
     */
 
-    setWordlist(wordlist);
+    //setWordlist(wordlist);
 }
 
 
@@ -43,16 +43,24 @@ void NegativeSentiment::loadWordlist()  {
   * @brief analysis takes in a histogram of input and returns a negative or positive score based on word frequency.
   * @return std::string.
   */
-std::string NegativeSentiment::analysis(std::map<string, int> histogram) {
+std::string NegativeSentiment::analysis(std::map<string, int> histogram)  {
      int score = 1;
-
+    /*
      for (const auto & p : histogram) {
        if ( wordlist.find(p.first) != wordlist.end() ) {
         score +=p.second;
        }
       }
 
-    setEmotionScore(score);
+    */
+    //setEmotionScore(score);
 
   return " ";
+}
+
+int main(){
+
+
+return 0;
+
 }
