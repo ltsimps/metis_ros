@@ -12,7 +12,7 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
-//#include<fstream>
+#include<fstream>
 #include <sstream>
 
 
@@ -121,7 +121,7 @@ std::vector<std::string> Parser::getFileInput(std::string in ) {
    * @return map<std::string, int>
    */
 std::map<string, int> Parser::generateHistogram(std::vector<string> input) {
-std::map<string, int> histogram;
+  std::map<string, int> histogram;
 
   //for (const string & s : input) { ++histogram[s]; }
 

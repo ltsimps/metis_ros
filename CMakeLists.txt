@@ -51,6 +51,10 @@ add_executable(Parser src/Parser.cpp)
 target_link_libraries(Parser ${catkin_LIBRARIES})
 add_dependencies( Parser  metis_ros_generate_messages_cpp)
 
+
+add_executable(main src/main.cpp)
+target_link_libraries(main ${catkin_LIBRARIES})
+add_dependencies( main  metis_ros_generate_messages_cpp)
 #add_executable( main.cpp Parser.cpp 
 # Sentiment.cpp
 # PositiveSentiment.cpp

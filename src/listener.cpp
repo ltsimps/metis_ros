@@ -10,17 +10,33 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "tf/transform_listener.h"
+#include <sstream>
+#include <string>
+#include <iostream>
 
+struct buffer{
+std::stringstream ss;
+       
+
+}message;
 /**
 *@brief handles messages for the chatter topic.
 *@param std_msgs::stringConstPtr& msg
 */
 void chatterCallback(const std_msgs::String::ConstPtr& msg) {
-    ROS_INFO("I heard: [%s]", msg->data.c_str());
+    ROS_INFO("voice i  heard was: [%s]", msg->data.c_str());
 }
 
 void voiceCallback(const std_msgs::String::ConstPtr& msg) {
-    ROS_INFO("voice i  heard was: [%s]", msg->data.c_str());
+    std::string test = msg->data.c_str();
+    //ROS_INFO("I heard: [%s]", msg->data.c_str());
+    message.ss << msg->data<< " ";
+    ROS_INFO("Message size  greater: [%lu]", message.ss.str().size());
+    if(message.ss.str().size() > 10) {
+     ROS_INFO("Current Message: [%s]", message.ss.str().c_str() );
+     //ROS_INFO("Message size  greater: [%d]", message.ss.str().size());
+    }
+
 }
 /**
 *@brief main funtion for the listner  node
@@ -32,8 +48,8 @@ int main(int argc, char **argv) {
 
     ros::NodeHandle n;
     ros::NodeHandle v;
-
-    //ros::Subscriber sub = n.subscribe("chatter", 1000, chatterCallback);
+    
+    //ros::Subscriber sub = v.subscribe("chatter", 1000, chatterCallback);
     ros::Subscriber voice_sub = n.subscribe("voice_chatter", 1000, voiceCallback);
 
     ros::spin();
