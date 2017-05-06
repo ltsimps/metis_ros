@@ -37,12 +37,12 @@ add_dependencies( Sentiment  metis_ros_generate_messages_cpp)
 
 
 
-add_executable(PositiveSentiment src/PositiveSentiment.cpp)
-target_link_libraries(PositiveSentiment ${catkin_LIBRARIES})
-add_dependencies( PositiveSentiment  metis_ros_generate_messages_cpp)
+#add_executable(PositiveSentiment src/PositiveSentiment.cpp)
+#target_link_libraries(PositiveSentiment ${catkin_LIBRARIES})
+#add_dependencies( PositiveSentiment  metis_ros_generate_messages_cpp)
 
 
-add_executable(SentimentService src/NegativeSentiment.cpp src/SentimentService.cpp src/Parser.cpp)
+add_executable(SentimentService src/NegativeSentiment.cpp src/SentimentService.cpp src/Parser.cpp src/PositiveSentiment.cpp)
 target_link_libraries(SentimentService ${catkin_LIBRARIES})
 add_dependencies(SentimentService  metis_ros_generate_messages_cpp)
 

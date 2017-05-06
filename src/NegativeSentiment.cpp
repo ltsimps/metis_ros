@@ -22,19 +22,19 @@ using namespace std;
 
 void NegativeSentiment::loadWordlist()  {
     std::ifstream inputFile;
-    inputFile.open("../negative_words.txt");
+    inputFile.open("/home/viki/catkin_ws/src/metis_ros/negative_words.txt");
 
   // open the file if present, in read-text-mode.
-    ifstream fs("negative_words.txt");
+   // ifstream fs("negative_words.txt");
 
     // variable used to extract strings one by one.
-    string phonenum;
+    //string phonenum;
 
     // extract a string from the input, skipping whitespace
     //  including newlines, tabs, form-feeds, etc. when this
     //  no longer works (EOF or bad file, take your pick) the
     //  expression will return false
-    while (fs >> phonenum)
+   /* while (fs >> phonenum)
     {
         // use your phonenum string here.
         cout << phonenum << endl;
@@ -42,21 +42,21 @@ void NegativeSentiment::loadWordlist()  {
 
     // close the file on the chance you actually opened it.
     fs.close();
-
+    */
 
 
     std::set<string> wordlist;
 
    std::cout << " IN LOAD WORD LIST" << std::endl;
     // test file open
-   // if (inputFile) {
+    if (inputFile) {
         string value;
 
         // read the elements in the file into a vector
         while ( inputFile >> value ) {
             wordlist.insert(value);
-              std::cout << " IN INPUT FILE" << std::endl;
-      //  }
+              //std::cout << " IN INPUT FILE" << std::endl;
+        }
     }
 
      std::set<string>::iterator it;
@@ -93,8 +93,8 @@ std::string NegativeSentiment::analysis(std::map<string, int> histogram)  {
               << ':'
               << it->second   // string's value 
               << std::endl ;
-              //if (wordlist.find(it->first) != wordlist.end()){
-              if (it->first == "no"){
+              if (wordlist.find(it->first) != wordlist.end()){
+              //if (it->first == "no"){
                   score += it->second;
                   std::cout << " IN word llist if " << std::endl;
               }        

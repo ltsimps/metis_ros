@@ -1,5 +1,5 @@
 /**
- * @file   main.cpp
+ * @file   SentimentService.cpp
  * @date   May 05, 2017
  * @author Lamar Simpson
  * copyright 2017 Lamar Simpson
@@ -188,6 +188,8 @@ std::vector<string> split(const char *str, char c = ' ')
 bool negative_output(metis_ros::stringsRequest   &req,
                     metis_ros::stringsResponse  &resp) {
      ROS_WARN_STREAM("Now getting Negative Score");
+   
+     int NegativeScore, PositiveScore;
 
      std::map<string, int> histogram;
      std::vector<string> vectorOutput;
@@ -195,14 +197,34 @@ bool negative_output(metis_ros::stringsRequest   &req,
      vectorOutput = split(req.input.c_str());
      Parser  p;
      NegativeSentiment ns = NegativeSentiment();
-     //Sentiment *sp;
+     PositiveSentiment ps = PositiveSentiment(); 
      //ROS_ERROR_STREAM("There is no string value that you input ");
      ns.loadWordlist();
      histogram = p.generateHistogram(vectorOutput);
      ns.analysis(histogram);
-                       
+     NegativeScore = ns.getEmotionScore();
+      
+    
+       
+     ps.loadWordlist();
+     ps.analysis(histogram);
+     PositiveScore = ps.getEmotionScore();
+         
+                
 
-     ROS_WARN_STREAM(ns.getEmotionScore());
+     ROS_WARN_STREAM(NegativeScore);
+     ROS_WARN_STREAM(PositiveScore);
+
+     
+  if (PositiveScore > NegativeScore)
+    std::cout << "\033[1;34mPOSITIVE\033[0m\n" << std::endl;
+  else if (PositiveScore < NegativeScore)
+    std::cout << "\033[1;31mNEGATIVE\033[0m\n" << std::endl;
+  else
+    std::cout << "\033[1;36mNEUTRAL\033[0m\n" << std::endl;
+     
+         
+
   return true;
 }
 
