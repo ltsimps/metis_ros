@@ -42,19 +42,19 @@ target_link_libraries(PositiveSentiment ${catkin_LIBRARIES})
 add_dependencies( PositiveSentiment  metis_ros_generate_messages_cpp)
 
 
-add_executable(NegativeSentiment src/NegativeSentiment.cpp)
-target_link_libraries(NegativeSentiment ${catkin_LIBRARIES})
-add_dependencies( NegativeSentiment  metis_ros_generate_messages_cpp)
+add_executable(SentimentService src/NegativeSentiment.cpp src/SentimentService.cpp src/Parser.cpp)
+target_link_libraries(SentimentService ${catkin_LIBRARIES})
+add_dependencies(SentimentService  metis_ros_generate_messages_cpp)
 
 
-add_executable(Parser src/Parser.cpp)
-target_link_libraries(Parser ${catkin_LIBRARIES})
-add_dependencies( Parser  metis_ros_generate_messages_cpp)
+#add_executable(Parser src/Parser.cpp)
+#target_link_libraries(Parser ${catkin_LIBRARIES})
+#add_dependencies( Parser  metis_ros_generate_messages_cpp)
 
 
-add_executable(main src/main.cpp)
-target_link_libraries(main ${catkin_LIBRARIES})
-add_dependencies( main  metis_ros_generate_messages_cpp)
+#add_executable(SentimentService src/SentimentService.cpp)
+#target_link_libraries(SentimentService ${catkin_LIBRARIES})
+#add_dependencies( SentimentService  metis_ros_generate_messages_cpp)
 #add_executable( main.cpp Parser.cpp 
 # Sentiment.cpp
 # PositiveSentiment.cpp

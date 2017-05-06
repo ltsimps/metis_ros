@@ -13,6 +13,8 @@
 #include <sstream>
 #include <string>
 #include <iostream>
+#include "metis_ros/strings.h"
+
 
 struct buffer{
 std::stringstream ss;
@@ -32,9 +34,15 @@ void voiceCallback(const std_msgs::String::ConstPtr& msg) {
     //ROS_INFO("I heard: [%s]", msg->data.c_str());
     message.ss << msg->data<< " ";
     ROS_INFO("Message size  greater: [%lu]", message.ss.str().size());
-    if(message.ss.str().size() > 10) {
+    if(message.ss.str().size() > 100) {
      ROS_INFO("Current Message: [%s]", message.ss.str().c_str() );
      //ROS_INFO("Message size  greater: [%d]", message.ss.str().size());
+      ros::NodeHandle v;
+      
+     metis_ros::strings srv;
+     ros::ServiceClient client = v.serviceClient<metis_ros::strings >("negative_output");
+     srv.request.input = message.ss.str();
+     client.call(srv);
     }
 
 }
@@ -47,10 +55,10 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "listener");
 
     ros::NodeHandle n;
-    ros::NodeHandle v;
     
     //ros::Subscriber sub = v.subscribe("chatter", 1000, chatterCallback);
     ros::Subscriber voice_sub = n.subscribe("voice_chatter", 1000, voiceCallback);
+    
 
     ros::spin();
 

@@ -16,6 +16,15 @@
 #include <Sentiment.hpp>
 #include <PositiveSentiment.hpp>
 #include <NegativeSentiment.hpp>
+#include "ros/ros.h"
+#include "metis_ros/strings.h"
+#include <boost/foreach.hpp>
+#include <boost/tokenizer.hpp>
+
+
+
+
+
 
 using std::string;
 using std::cout;
@@ -158,9 +167,69 @@ void getFileInput() {
 }
 
 
+std::vector<string> split(const char *str, char c = ' ')
+{
+    std::vector<string> result;
+
+    do
+    {
+        const char *begin = str;
+
+        while(*str != c && *str)
+            str++;
+
+        result.push_back(string(begin, str));
+    } while (0 != *str++);
+
+    return result;
+}
 
 
-int main() {
+bool negative_output(metis_ros::stringsRequest   &req,
+                    metis_ros::stringsResponse  &resp) {
+     ROS_WARN_STREAM("Now getting Negative Score");
+
+     std::map<string, int> histogram;
+     std::vector<string> vectorOutput;
+    
+     vectorOutput = split(req.input.c_str());
+     Parser  p;
+     NegativeSentiment ns = NegativeSentiment();
+     //Sentiment *sp;
+     //ROS_ERROR_STREAM("There is no string value that you input ");
+     ns.loadWordlist();
+     histogram = p.generateHistogram(vectorOutput);
+     ns.analysis(histogram);
+                       
+
+     ROS_WARN_STREAM(ns.getEmotionScore());
+  return true;
+}
+
+
+
+
+
+
+
+
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "SentimentService");
+  ros::NodeHandle n;
+  // service to change string output that launches in xterm window.
+  ros::ServiceServer negative_service;
+  negative_service  = n.advertiseService("negative_output", negative_output);
+
+
+  ros::spin();
+
+
+    //NegativeSentiment ns = NegativeSentiment();
+    //Sentiment *sp;
+   //ROS_ERROR_STREAM("There is no string value that you input ");
+    //ns.loadWordlist();
+
+
  /* string response =  "Y";
 
 

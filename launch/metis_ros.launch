@@ -30,6 +30,14 @@
         launch-prefix = "xterm -e"
     />
 
+    <node
+        pkg           = "metis_ros"
+        type          = "SentimentService"
+        name          = "SentimentService"
+        output        = "screen"
+        launch-prefix = "xterm -e"
+    />
+
     <node 
       pkg="rosbag" 
       type="record" 

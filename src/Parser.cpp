@@ -125,17 +125,13 @@ std::map<string, int> Parser::generateHistogram(std::vector<string> input) {
 
   //for (const string & s : input) { ++histogram[s]; }
 
-/*
-  for (const auto & p : histogram)
-  {
-      std::cout << "Word '" << p.first << "' occurs " << p.second << " times.\n";
-  }
-  */
+for(std::vector<string>::iterator it = input.begin(); it != input.end(); ++it) {
+    ++histogram[*it];
+ }
+
+
+
 
   return histogram;
 }
 
-int main (){
-
- return 0;
-}

@@ -32,26 +32,26 @@ class Sentiment{
     * @brief setEmotionScore assigns a value to the emotionscore class member variable
     * @param int emotionScore
    */
-  void setEmotionScore(int emotionScore);
+  //void setEmotionScore(int emotionScore);
 
 
   /**
     * @brief setWordlist assigns a value to the wordlist class member set
     * @param std::set<string> wordlist
   */
-   void setWordlist(std::set<std::string> wordlist);
+   //void setWordlist(std::set<std::string> wordlist);
 
   /**
     * @brief getEmotionScore returns the value of the emotionscore class member variable
     *
   */
-  int getEmotionScore() const;
+  //int getEmotionScore() const;
 
   /**
     * @brief getWordlist returns the value of the wordlist class member set
     *
     */
-  std::set<std::string> getWordlist() const;
+ // std::set<std::string> getWordlist() const;
 
 
  protected:
