@@ -20,6 +20,7 @@
 #include "metis_ros/strings.h"
 #include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
+#include <std_msgs/Int8.h>
 
 
 
@@ -31,6 +32,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+ros::Publisher chatter_pub;
+int score;
 /**
   * @brief  Glob function that gets the contents of  files directory
   * @return boolean value denoting the user's desire to continue the program.
@@ -216,14 +219,22 @@ bool negative_output(metis_ros::stringsRequest   &req,
      ROS_WARN_STREAM(PositiveScore);
 
      
-  if (PositiveScore > NegativeScore)
+  if (PositiveScore > NegativeScore) {
     std::cout << "\033[1;34mPOSITIVE\033[0m\n" << std::endl;
+    
+  }
   else if (PositiveScore < NegativeScore)
     std::cout << "\033[1;31mNEGATIVE\033[0m\n" << std::endl;
   else
     std::cout << "\033[1;36mNEUTRAL\033[0m\n" << std::endl;
      
          
+
+  score =   PositiveScore - NegativeScore;
+  std_msgs::Int8 msg;
+  msg.data = score;
+  ROS_INFO("%d", msg.data);
+  chatter_pub.publish(msg);
 
   return true;
 }
@@ -242,8 +253,11 @@ int main(int argc, char **argv) {
   ros::ServiceServer negative_service;
   negative_service  = n.advertiseService("negative_output", negative_output);
 
-
+ 
+  ros::NodeHandle v;
+  chatter_pub = v.advertise<std_msgs::Int8>("score",1000);
   ros::spin();
+
 
 
     //NegativeSentiment ns = NegativeSentiment();

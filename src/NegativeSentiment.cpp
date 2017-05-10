@@ -96,7 +96,7 @@ std::string NegativeSentiment::analysis(std::map<string, int> histogram)  {
               if (wordlist.find(it->first) != wordlist.end()){
               //if (it->first == "no"){
                   score += it->second;
-                  std::cout << " IN word llist if " << std::endl;
+                  std::cout << " IN word list if " << std::endl;
               }        
     }
    setEmotionScore(score);

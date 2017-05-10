@@ -38,11 +38,12 @@ void voiceCallback(const std_msgs::String::ConstPtr& msg) {
      ROS_INFO("Current Message: [%s]", message.ss.str().c_str() );
      //ROS_INFO("Message size  greater: [%d]", message.ss.str().size());
       ros::NodeHandle v;
-      
+     int score = 0; 
      metis_ros::strings srv;
      ros::ServiceClient client = v.serviceClient<metis_ros::strings >("negative_output");
      srv.request.input = message.ss.str();
      client.call(srv);
+     ROS_INFO("Score: [%i]", score);
     }
 
 }
