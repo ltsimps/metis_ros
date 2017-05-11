@@ -1,6 +1,6 @@
 /**
  * @file   Parser.cpp
- * @date   Mar 11, 2017
+ * @date   May 11, 2017
  * @author Lamar Simpson
  * Copyright 2017 Lamar Simpson
  *@brief Class that handles all input and parses it out into a format that Semantics class can use.
@@ -18,6 +18,7 @@
 
 using std::cin;
 using std::string;
+using std::vector;
 
 /**
   * @brief  Constructor Parser Class
@@ -42,13 +43,13 @@ this->input = input;
   * @return string
  */
 std::string Parser::stringConversion(std::vector<std::string> input) {
-//std::ostringstream oss;
+// std::ostringstream oss;
 
 if(!input.empty()) {
-//std::copy(input.begin(), input.end(),
-//std::ostream_iterator<string>(oss, " "));
+// std::copy(input.begin(), input.end(),
+// std::ostream_iterator<string>(oss, " "));
 }
-  //return oss.str();
+  // return oss.str();
   return "";
 }
 
@@ -89,11 +90,6 @@ std::vector<std::string> Parser::getInput() {
    * @return std::vector<std::string> that contains all input from files specified by the user or file exemplars.
   */
 std::vector<std::string> Parser::getFileInput(std::string in ) {
-  // std::ifstream inputFile{"../Positive_Examples/Positive_Example_1.txt"};
-
-  //std::ifstream inputFile{in};
-
-
   std::vector<string> file;
 
 /*
@@ -123,14 +119,9 @@ std::vector<std::string> Parser::getFileInput(std::string in ) {
 std::map<string, int> Parser::generateHistogram(std::vector<string> input) {
   std::map<string, int> histogram;
 
-  //for (const string & s : input) { ++histogram[s]; }
-
-for(std::vector<string>::iterator it = input.begin(); it != input.end(); ++it) {
+  for (vector<string>::iterator it = input.begin(); it != input.end(); ++it) {
     ++histogram[*it];
- }
-
-
-
+  }
 
   return histogram;
 }

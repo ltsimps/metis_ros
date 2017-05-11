@@ -39,7 +39,6 @@ void Sentiment::setEmotionScore(int emotionScore) {
       * @brief getWordlist returns the value of the wordlist class member set
       *
    */
-  
 /*
   std::set<std::string> Sentiment::getWordlist() const {
     return wordlist;
@@ -78,8 +77,6 @@ std::string Sentiment::analysis(std::map<std::string, int> histogram) {
 }
 
 
-int main(){
-
+int main() {
 return 0;
-
 }

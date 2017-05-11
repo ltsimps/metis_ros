@@ -6,7 +6,6 @@
  *  Copyright 2017 
  */
 
-//#include <tf/transform_broadcaster.h>
 #include <sstream>
 #include <string>
 #include "ros/ros.h"
@@ -21,8 +20,8 @@ struct messages {
 }message;
 
 
-bool change_output(metis_ros::stringsRequest   &req,
-                    metis_ros::stringsResponse  &resp) {
+bool change_output(metis_ros::stringsRequest   &req, // NOLINT
+                    metis_ros::stringsResponse  &resp) { // NOLINT 
   ROS_WARN_STREAM("Now changing output to " << req.input);
 
   if (req.input =="") {
@@ -66,38 +65,27 @@ int main(int argc, char **argv) {
     // Sets frequency to default value or passed in value.
     ros::Rate loop_rate(frequency);
     message.newMessage = "FEAR THE TURTLE";
-    
-    //setting up transform and broadcaster. 
+    // setting up transform and broadcaster.
     static tf::TransformBroadcaster broadcaster;
-    tf::Transform transform;           
-    
+    tf::Transform transform;
     int count = 0;
     while (ros::ok()) {
         std_msgs::String msg;
         std::stringstream ss;
         ss << message.newMessage <<" "  << count;
         msg.data = ss.str();
-
         ROS_INFO("%s", msg.data.c_str());
-
-
 
         // publishes the messages to be consumed.
         chatter_pub.publish(msg);
 
         transform.setOrigin(tf::Vector3(1.0, 1.0, 1.0));
         transform.setRotation(tf::Quaternion(0, 1, 0, 1));
-        broadcaster.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
-        ROS_INFO("%f", transform.getRotation().y());
-        ROS_INFO("%f", transform.getRotation().z());
-        ROS_INFO("%f", transform.getRotation().w());
 
 
         ros::spinOnce();
-
         loop_rate.sleep();
-
         ++count;
     }
     return 0;

@@ -1,11 +1,12 @@
 /**
  * @file   SentimentService.cpp
- * @date   May 05, 2017
+ * @date   May 11, 2017
  * @author Lamar Simpson
  * copyright 2017 Lamar Simpson
  * @brief Parsed input from the user.
  */
 #include <glob.h>
+#include <std_msgs/Int8.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -18,11 +19,6 @@
 #include <NegativeSentiment.hpp>
 #include "ros/ros.h"
 #include "metis_ros/strings.h"
-#include <boost/foreach.hpp>
-#include <boost/tokenizer.hpp>
-#include <std_msgs/Int8.h>
-
-
 
 
 
@@ -170,15 +166,13 @@ void getFileInput() {
 }
 
 
-std::vector<string> split(const char *str, char c = ' ')
-{
+std::vector<string> split(const char *str, char c = ' ') {
     std::vector<string> result;
 
-    do
-    {
+    do {
         const char *begin = str;
 
-        while(*str != c && *str)
+        while (*str != c && *str)
             str++;
 
         result.push_back(string(begin, str));
@@ -188,47 +182,34 @@ std::vector<string> split(const char *str, char c = ' ')
 }
 
 
-bool negative_output(metis_ros::stringsRequest   &req,
-                    metis_ros::stringsResponse  &resp) {
+bool negative_output(metis_ros::stringsRequest   &req, // NOLINT
+                    metis_ros::stringsResponse  &resp) { // NOLINT 
      ROS_WARN_STREAM("Now getting Negative Score");
-   
      int NegativeScore, PositiveScore;
 
      std::map<string, int> histogram;
      std::vector<string> vectorOutput;
-    
      vectorOutput = split(req.input.c_str());
      Parser  p;
      NegativeSentiment ns = NegativeSentiment();
-     PositiveSentiment ps = PositiveSentiment(); 
-     //ROS_ERROR_STREAM("There is no string value that you input ");
+     PositiveSentiment ps = PositiveSentiment();
+     // ROS_ERROR_STREAM("There is no string value that you input ");
      ns.loadWordlist();
      histogram = p.generateHistogram(vectorOutput);
      ns.analysis(histogram);
      NegativeScore = ns.getEmotionScore();
-      
-    
-       
      ps.loadWordlist();
      ps.analysis(histogram);
      PositiveScore = ps.getEmotionScore();
-         
-                
-
      ROS_WARN_STREAM(NegativeScore);
      ROS_WARN_STREAM(PositiveScore);
 
-     
-  if (PositiveScore > NegativeScore) {
+  if (PositiveScore > NegativeScore)
     std::cout << "\033[1;34mPOSITIVE\033[0m\n" << std::endl;
-    
-  }
   else if (PositiveScore < NegativeScore)
     std::cout << "\033[1;31mNEGATIVE\033[0m\n" << std::endl;
   else
     std::cout << "\033[1;36mNEUTRAL\033[0m\n" << std::endl;
-     
-         
 
   score =   PositiveScore - NegativeScore;
   std_msgs::Int8 msg;
@@ -241,11 +222,6 @@ bool negative_output(metis_ros::stringsRequest   &req,
 
 
 
-
-
-
-
-
 int main(int argc, char **argv) {
   ros::init(argc, argv, "SentimentService");
   ros::NodeHandle n;
@@ -253,39 +229,9 @@ int main(int argc, char **argv) {
   ros::ServiceServer negative_service;
   negative_service  = n.advertiseService("negative_output", negative_output);
 
- 
   ros::NodeHandle v;
-  chatter_pub = v.advertise<std_msgs::Int8>("score",1000);
+  chatter_pub = v.advertise<std_msgs::Int8>("score", 1000);
   ros::spin();
 
-
-
-    //NegativeSentiment ns = NegativeSentiment();
-    //Sentiment *sp;
-   //ROS_ERROR_STREAM("There is no string value that you input ");
-    //ns.loadWordlist();
-
-
- /* string response =  "Y";
-
-
-  while (response == "Y" || response == "y") {
-    std::cin.clear();
-
-    std::string processing = demo();
-  if (processing == "user") {
-    getUserInput();
-  } else if (processing == "file") {
-    getFileInput();
-
-  } else {
-    std::cout << "Bad Input please enter file or user (all lowercase)\n"
-        << std::endl;
-    continue;
-  }
-
-  std::cout << "Enter y or Y if you wish to continue " << std::endl;
-  std::cin >> response;
-}*/
   return 0;
 }
