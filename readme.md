@@ -24,7 +24,7 @@ When running the program simply enter the words you would like to have anaylzed 
 
 ## Exemplars 
 This project contains a number of examples in. You can also enter your own files here.
--- Files
+- Files
   - ../Positive_Examples 
   - ../Negative_Examples
 
