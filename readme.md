@@ -24,9 +24,9 @@ When running the program simply enter the words you would like to have anaylzed 
 
 ## Exemplars 
 This project contains a number of examples in. You can also enter your own files here.
-
-$../Positive_Examples 
-$../Negative_Examples
+-- Files
+  - ../Positive_Examples 
+  - ../Negative_Examples
 
 These exemplars can be used to for analysis.
 
@@ -58,17 +58,20 @@ $ git clone --https://github.com/ltsimps/metis_ros.git
     - rosbag
 
 ## Build
+```
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src
 $ catkin_init_workspace
 $ cd ~/catkin_ws/
 $ catkin_make
 $ source ./src/setup.bash
+```
 
 ## To Run the program
 $ roslaunch metis_launch.launch record:=(false/true)
 
 ## To Test the program
+```
 
 ```
 
