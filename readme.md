@@ -43,6 +43,9 @@ https://docs.google.com/a/terpmail.umd.edu/spreadsheets/d/1wB8Fqtjaw88LNrhkzxSVg
 - Checkout the repo (and submodules)
 
 $ git clone --https://github.com/ltsimps/metis_ros.git
+$ sudo apt-get install arduino arduino-core
+$ sudo apt-get install ros-indigo-rosserial ros-indigo-rosserial-arduino ros-ind
+igo-rosserial-server
 
 ## Dependencies
 - Ubuntu 14.04
@@ -50,7 +53,8 @@ $ git clone --https://github.com/ltsimps/metis_ros.git
 - TurtleBot_Gazebo
 - Package Dependencies
     - roscpp
-    - rosserial 
+    - rosserial
+    - arduino-core 
     - std_msgs
     - message_generation
     - pocketsphinx
