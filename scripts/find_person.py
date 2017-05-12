@@ -42,7 +42,7 @@ while not rospy.is_shutdown():
     #move = move - 0.4
   else:
     #twist.linear.y = -1
-    twist.angular.z = 1
+    twist.angular.z = .2
     driving_forward = True
   cmd_vel_pub.publish(twist)
 

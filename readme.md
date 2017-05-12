@@ -44,20 +44,37 @@ https://docs.google.com/a/terpmail.umd.edu/spreadsheets/d/1wB8Fqtjaw88LNrhkzxSVg
 
 - Checkout the repo (and submodules)
 ```
-$ git clone --https://github.com/ltsimps/Midterm.git
+$ git clone --https://github.com/ltsimps/metis_ros.git
 
 
-## Build and Run Project
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
+
+
+## Dependencies
+- Ubuntu 14.04
+- ROS indigo
+- TurtleBot_Gazebo
+- Package Dependencies
+    - roscpp
+    - rosserial 
+    - std_msgs
+    - message_generation
+    - pocketsphinx
+    - rostest
+    - rosbag
+
+## Build
+```bash
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws/src
+$ catkin_init_workspace
+$ cd ~/catkin_ws/
+$ catkin_make
+```
 
 ## To Run the program
-$ ./app/metis-app
+$ roslaunch metis_launch.launch record:=(false/true)
 
 ## To Test the program
-./test/test-cpp
 
 ```
 
