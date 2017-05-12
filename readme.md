@@ -13,8 +13,7 @@ Initial Midterm Commit
 ## Description of Project
 Metis:
 
-Metis is a robot that shows the emotional content of it's surroundings. This project deals with the perception by analyzing Sentiment. The plan is to no only have this run in gazebo, but also be run on an arduino board.This program reads input from the user or from files and denotes whether it is positive or negative. The program also listens real time for voice input and gives back the sentiment analysis. 
-
+Metis is a robot that shows the emotional content of its surroundings. This project deals with the perception by analyzing Sentiment. The plan is to no only have this run in gazebo, but also be run on an arduino board.This program reads input from the user or from files and denotes whether it is positive or negative. The program also listens real time for voice input and gives back the sentiment analysis. 
 
 ## Demo
 When running the program simply enter the words you would like to have anaylzed and Metis will tell you if they are positive, Neutral or Negative. You also have the option of entering a file or picking from the exemplar list.
@@ -41,13 +40,9 @@ https://docs.google.com/a/terpmail.umd.edu/spreadsheets/d/1wB8Fqtjaw88LNrhkzxSVg
 
 
 ## Installation
-
 - Checkout the repo (and submodules)
-```
+
 $ git clone --https://github.com/ltsimps/metis_ros.git
-
-
-
 
 ## Dependencies
 - Ubuntu 14.04
@@ -63,13 +58,12 @@ $ git clone --https://github.com/ltsimps/metis_ros.git
     - rosbag
 
 ## Build
-```bash
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src
 $ catkin_init_workspace
 $ cd ~/catkin_ws/
 $ catkin_make
-```
+$ source ./src/setup.bash
 
 ## To Run the program
 $ roslaunch metis_launch.launch record:=(false/true)
