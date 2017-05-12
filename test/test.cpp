@@ -18,6 +18,22 @@
 #include <Sentiment.hpp>
 #include <PositiveSentiment.hpp>
 #include <NegativeSentiment.hpp>
+#include <ros/ros.h>
+#include <ros/service_client.h>
+#include <tf/transform_broadcaster.h>
+#include <tf/transform_listener.h>
+#include <ros/service_client.h>
+#include "metis_ros/strings.h"
+
+
+
+
+
+
+
+
+
+
 
 using std::string;
 using std::cout;

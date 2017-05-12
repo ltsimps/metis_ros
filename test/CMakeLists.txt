@@ -4,10 +4,14 @@ add_executable(
     cpp-test
     main.cpp
     test.cpp
-    ../app/Parser.cpp
-    ../app/Sentiment.cpp
-    ../app/NegativeSentiment.cpp
-    ../app/PositiveSentiment.cpp
+    ../src/Parser.cpp
+    ../src/Sentiment.cpp
+    ../src/NegativeSentiment.cpp
+    ../src/PositiveSentiment.cpp
+    ../src/SentimentService.cpp
+    ../src/listener.cpp
+    ../src/talker.cpp
+
     
     
 )
