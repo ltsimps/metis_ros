@@ -18,10 +18,9 @@ Metis is a robot that shows the emotional content of its surroundings. This proj
 ## Demo
 When running the program simply enter the words you would like to have anaylzed and Metis will tell you if they are positive, Neutral or Negative. You also have the option of entering a file or picking from the exemplar list.
 
-![Alt text](./UserInput.png?raw=true "User Input Demo")
 
 
-[linkname](https://www.youtube.com/watch?v=bseQLcLv7SQ)
+[DEMO](https://www.youtube.com/watch?v=bseQLcLv7SQ)
 
 
 
