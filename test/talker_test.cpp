@@ -1,20 +1,40 @@
-#include <ros/ros.h>
-#include <ros/service_client.h>
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_listener.h>
 #include <gtest/gtest.h>
+#include <ros/service_client.h>
+#include <map>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <set>
+#include <memory>
+#include <Parser.hpp>
+#include <Sentiment.hpp>
+#include <PositiveSentiment.hpp>
+#include <NegativeSentiment.hpp>
+#include <ros/ros.h>
 #include <ros/service_client.h>
 #include "metis_ros/strings.h"
 
 
 
 
+
+
+
+
+
+using std::string;
+using std::cout;
+using std::cin;
+
+/*
+
 //test the strings service existence
 TEST(TalkeSuite, existence_Test) {
   ros::NodeHandle nh; 
   ros::ServiceClient client;
-
-  
   //call service and check for existence
   client = nh.serviceClient < metis_ros::strings > ("change_output");
   bool exists(client.waitForExistence(ros::Duration(20)));
@@ -23,35 +43,47 @@ TEST(TalkeSuite, existence_Test) {
 }
 
 
+/**
+ * @brief Test the histogram function to make sure it returns words and frequencies.
+ *
+ */
+TEST(input, histogram) {
+  Parser  p;
+  std::vector<string> words;
+  words.push_back("GUESS");
+  words.push_back("HANGMAN");
+  words.push_back("DIFFICULT");
+  words.push_back("TOM");
+  words.push_back("JOB");
+  words.push_back("HELLO");
+  words.push_back("HELLO");
+  words.push_back("HELLO");
+  words.push_back("GUESS");
 
-
-//http://docs.ros.org/api/tf/html/c++/classtf_1_1Transformer.html Transformer api
-TEST(TestSuite, tf_test) {
-
-  //ros::NodeHandle n;
-  tf::TransformListener listener;
-  tf::StampedTransform transform;
-
-  //needed to make sure the transform is available, otherwise garbage will be in the transform values
-  listener.waitForTransform("world", "talk", ros::Time(0), ros::Duration(20.0) );
-  listener.lookupTransform("world", "talk", ros::Time(0), transform);
-
-
-    EXPECT_EQ(1, transform.getOrigin().x());
-    EXPECT_EQ(1, transform.getOrigin().y());
-    EXPECT_EQ(1, transform.getOrigin().z());
-
-    //Test transform after rotation with transform.setRotation(tf::Quaternion(0, 1, 0, 1));
- 
-    EXPECT_EQ(0, transform.getRotation().x());
-    EXPECT_LT(0, transform.getRotation().y());
-    EXPECT_EQ(0, transform.getRotation().z());
-    EXPECT_LT(0, transform.getRotation().w());
-    EXPECT_LT(transform.getRotation().w(), 0.8);
-    EXPECT_LT(transform.getRotation().w(), 0.8);
-
+  std::map<string , int > testMap = p.generateHistogram(words);
+  EXPECT_EQ(testMap["GUESS"] , 2);
+  EXPECT_EQ(testMap["HANGMAN"] , 1);
+  EXPECT_EQ(testMap["DIFFICULT"] , 1);
+  EXPECT_EQ(testMap["TOM"] , 1);
+  EXPECT_EQ(testMap["JOB"] , 1);
+  EXPECT_EQ(testMap["HELLO"] , 3);
 }
 
+
+
+TEST(file_test, NegLoadWordlist) {
+  NegativeSentiment ns;
+  ns.loadWordlist();
+
+  EXPECT_GT(ns.getWordlist().size(), 0);
+}
+
+TEST(file_test, posLoadWordlist) {
+  PositiveSentiment ps;
+  ps.loadWordlist();
+
+  EXPECT_GT(ps.getWordlist().size(), 0);
+}
 
 
 int main(int argc, char **argv) {

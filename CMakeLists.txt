@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
  rospy 
  std_msgs 
  message_generation
+ genmsg
  tf
 )
 
@@ -42,7 +43,7 @@ add_dependencies( Sentiment  metis_ros_generate_messages_cpp)
 #add_dependencies( PositiveSentiment  metis_ros_generate_messages_cpp)
 
 
-add_executable(SentimentService src/NegativeSentiment.cpp src/SentimentService.cpp src/Parser.cpp src/PositiveSentiment.cpp)
+add_executable(SentimentService src/NegativeSentiment.cpp src/SentimentService.cpp src/Parser.cpp src/PositiveSentiment.cpp src/Parser.cpp)
 target_link_libraries(SentimentService ${catkin_LIBRARIES})
 add_dependencies(SentimentService  metis_ros_generate_messages_cpp)
 
@@ -81,6 +82,11 @@ if(CATKIN_ENABLE_TESTING)
           talker_test
 	  test/talker_test.launch
 	  test/talker_test.cpp
+
+          src/Parser.cpp
+          src/PositiveSentiment.cpp
+	  src/NegativeSentiment.cpp
+
   )
   
   target_link_libraries(
@@ -90,13 +96,14 @@ if(CATKIN_ENABLE_TESTING)
   
   add_dependencies(
 	  talker
+          listener
+          SentimentService
+          Sentiment 
 	  talker_test
 	  ${catkin_EXPORTED_TARGETS}
           ${PROJECT_NAME}_generate_messages_cpp
 
   )
 endif()
-
-
 
 

@@ -75,8 +75,6 @@ std::string Sentiment::analysis(std::map<std::string, int> histogram) {
 
         return " ";
 }
-
-
 int main() {
 return 0;
 }

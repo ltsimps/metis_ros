@@ -65,7 +65,7 @@ std::string PositiveSentiment::analysis(std::map<string, int> histogram)  {
               << std::endl;
               if (wordlist.find(it->first) != wordlist.end()) {
                   score += it->second;
-                  std::cout << " IN word llist if " << std::endl;
+                  std::cout << " IN word list if " << std::endl;
               }
     }
     setEmotionScore(score);

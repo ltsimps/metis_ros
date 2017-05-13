@@ -40,12 +40,19 @@ https://docs.google.com/a/terpmail.umd.edu/spreadsheets/d/1wB8Fqtjaw88LNrhkzxSVg
 
 
 ## Installation
-- Checkout the repo (and submodules)
 ```
 $ git clone --https://github.com/ltsimps/metis_ros.git
+
 $ sudo apt-get install arduino arduino-core
+
 $ sudo apt-get install ros-indigo-rosserial ros-indigo-rosserial-arduino ros-ind
 igo-rosserial-server
+
+$ sudo apt-get install pocketsphinx-hmm-wsj1
+
+$ sudo apt-get install pocketsphinx-lm-wsj
+
+$ sudo apt-get install python-pocketsphinx
 ```
 ## Dependencies
 - Ubuntu 14.04
@@ -76,6 +83,7 @@ $ roslaunch metis_launch.launch record:=(false/true)
 
 ## To Test the program
 ```
+$ rostest metis_ros talker_test.launch
 
 ```
 
